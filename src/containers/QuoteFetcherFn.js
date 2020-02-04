@@ -8,27 +8,32 @@ const quoteProviderFactory = {
   simpsons: getSimpsonsQuote,
   ron: getRonQuote
 };
-// state = {
-//   quoteProvider: 'ron',
-//   quote: {text: '', name: '', img: '' }
-// }
+
 const QuoteFetcherFn = () => {
   const [provider, setProvider] = useState('ron');
-  //const [quote, setQuote] = useState([]);
+  const [quote, setQuote] = useState({ name: '', text: '', img: '' });
 
-  // useEffect(() => {
-  //   getRonQuote()
-  //     .then(res => res.json())
-  //     .then(quote => console.log(quote));
-  // }, []);
+  const handleProvider = ({ target }) => setProvider(target.value);
+
   useEffect(() => {
+    fetchQuote();
+  }, [provider]);
 
-  }, []);
+  const fetchQuote = ()=>{
+    quoteProviderFactory[provider]()
+      .then(quote => setQuote(quote));
+  };
+  
+  const radioButtons = [
+    { label: 'The Simpsons', value: 'simpsons' },
+    { label: 'Ron Swanson', value: 'ron' }
+  ];
 
   return (
     <>
-      <Quote />
-      <Button />
+      <RadioButtons radioButtons={radioButtons} name="quoteProvider" onChange={handleProvider}/>
+      <Quote {...quote} />
+      <Button text="Get another quote" onClick={fetchQuote}/>
     </>
   );
 };
