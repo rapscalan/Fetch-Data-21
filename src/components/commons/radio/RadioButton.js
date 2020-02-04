@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import styles from '.'
+import styles from './RadioButton.css';
 
 const RadioButton = ({ name, label, value, onChange }) => (
-  <div className={StyleSheet.RadioButton}>
+  <div className={styles.RadioButton}>
     <input id={value} type="radio" name={name} value={value} onChange={onChange} />
 
     <label htmlFor={value}>{label}</label>
