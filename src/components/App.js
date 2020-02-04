@@ -1,6 +1,7 @@
 import React from 'react';
+//import QuoteFetcher from '../containers/QuoteFetcher';
+import QuoteFetcher from '../containers/QuoteFetcherFn';
 
 export default function App() {
-  return <h1>Hello World</h1>;
+  return <QuoteFetcher />;
 }
-  
