@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { getRonQuote, getSimpsonsQuote } from '../services/quotesApi';
+import { getRonQuote, getSimpsonsQuote, getFuturamaQuote } from '../services/quotesApi';
 import Quote from '../components/quotes/Quote';
 import Button from '../components/commons/button/Button';
 import RadioButtons from '../components/commons/radio/RadioButtons';
 
 const quoteProviderFactory = {
   simpsons: getSimpsonsQuote,
-  ron: getRonQuote
+  ron: getRonQuote,
+  futurama: getFuturamaQuote
 };
 
 const QuoteFetcherFn = () => {
@@ -26,7 +27,8 @@ const QuoteFetcherFn = () => {
   
   const radioButtons = [
     { label: 'The Simpsons', value: 'simpsons' },
-    { label: 'Ron Swanson', value: 'ron' }
+    { label: 'Ron Swanson', value: 'ron' },
+    { label: 'Futurama', value: 'futurama' }
   ];
 
   return (

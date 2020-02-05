@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { getRonQuote, getSimpsonsQuote } from '../services/quotesApi';
+import { getRonQuote, getSimpsonsQuote, getFuturamaQuote } from '../services/quotesApi';
 import Button from '../components/commons/button/Button';
 import Quote from '../components/quotes/Quote';
 import RadioButtons from '../components/commons/radio/RadioButtons';
 
 const quoteProviderFactory = {
   simpsons: getSimpsonsQuote,
-  ron: getRonQuote
+  ron: getRonQuote,
+  futurama: getFuturamaQuote
 };
 
 export default class QuoteFetcher extends Component{
@@ -23,8 +24,6 @@ export default class QuoteFetcher extends Component{
   }
 
   fetch = () => {
-    //return getRonQuote()
-    //return getSimpsonsQuote()
     return quoteProviderFactory[this.state.quoteProvider]()
       .then(quote => this.setState({ quote }));
   };
@@ -33,7 +32,8 @@ export default class QuoteFetcher extends Component{
     const { quote } = this.state;
     const radioButtons = [
       { label: 'The Simpsons', value: 'simpsons' },
-      { label: 'Ron Swanson', value: 'ron' }
+      { label: 'Ron Swanson', value: 'ron' },
+      { label: 'Futurama', value: 'futurama' }
     ];
 
     return (
