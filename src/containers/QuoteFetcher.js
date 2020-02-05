@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { getRonQuote, getSimpsonsQuote } from '../services/quotesApi';
+import { getRonQuote, getSimpsonsQuote, getFuturamaQuote } from '../services/quotesApi';
 import Button from '../components/commons/button/Button';
 import Quote from '../components/quotes/Quote';
 import RadioButtons from '../components/commons/radio/RadioButtons';
 
 const quoteProviderFactory = {
   simpsons: getSimpsonsQuote,
-  ron: getRonQuote
+  ron: getRonQuote,
+  futurama: getFuturamaQuote
 };
 
 export default class QuoteFetcher extends Component{
