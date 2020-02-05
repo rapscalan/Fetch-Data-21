@@ -11,7 +11,7 @@
   }
 
   input:checked + label {
-    background-color: red;
+    background-color: burlywood;
     color: white;
 
     transition: ease;
